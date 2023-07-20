@@ -1,3 +1,4 @@
+from ingredient import Ingredient
 
 class Recipe:
 
@@ -24,5 +25,8 @@ class Recipe:
             self._food_type = new_food_type
         else:
             raise Exception("Must be a string greater than 0 characters")
+        
+    def ingredients (self):
+        return [i for i in Ingredient.all if i.recipe == self ]
 
     food_type = property(get_food_type, set_food_type)

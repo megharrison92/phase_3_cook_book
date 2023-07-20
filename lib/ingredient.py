@@ -1,9 +1,11 @@
 
 class Ingredient:
+    all = []    
 
     def __init__(self, name, ingredient_type):
         self.name = name
         self.ingredient_type = ingredient_type
+        Ingredient.all.append(self)
 
     def get_name(self):
         return self._name
