@@ -2,6 +2,7 @@
 from ingredient import Ingredient
 from place import Place
 from recipe import Recipe
+import random
 
 if __name__ == '__main__':
 
@@ -18,7 +19,7 @@ if __name__ == '__main__':
     }
 
     while True:
-        user_input = input("Welcome to the Recipe Finder!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, 'F' to find recipes by ingredient, or 'X' to exit: ")
+        user_input = input("Welcome to the Recipe Finder!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, 'F' to find recipes by ingredient, 'S' for random suggestion, or 'X' to exit: ")
 
         if user_input.lower() == "r":
             print("Available recipes:")
@@ -60,6 +61,10 @@ if __name__ == '__main__':
                     print(recipe_name)
             else:
                 print(f"No recipes found containing '{ingredient}'.")
+
+        elif user_input.lower() == "s":
+            random_recipe = random.choice(list(recipes.keys()))
+            print(f"Random recipe suggestion: {random_recipe}")
 
         elif user_input.lower() == "x":
             break
