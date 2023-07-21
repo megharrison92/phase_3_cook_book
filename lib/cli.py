@@ -18,8 +18,9 @@ if __name__ == '__main__':
     "Tomato Soup": ['Butter', 'Onion', 'Garlic', 'Tomatoes', 'Vegetable broth', 'Spices']
     }
 
+
     while True:
-        user_input = input("Welcome to the Recipe Finder!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, 'F' to find recipes by ingredient, 'S' for random suggestion, 'A' for all ingredients available, or 'X' to exit: ")
+        user_input = input("Welcome to the Recipe Finder!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, 'F' to find recipes by ingredient, 'S' for random suggestion, 'A' for all ingredients available, 'N' to add a new recipe, or 'X' to exit: ")
 
         if user_input.lower() == "r":
             print("Available recipes:")
@@ -71,6 +72,23 @@ if __name__ == '__main__':
             for ingredient in recipes.values():
                 print(ingredient)
             print("--------------------------")
+
+        elif user_input.lower() == "n":
+            recipe_name_input = input("Enter the new recipe name: ")
+            recipe_name = recipe_name_input.strip()
+
+            
+            if recipe_name.lower() in recipes.keys():
+                print("Recipe already exists! Please enter a unique recipe name.")
+            else:
+                
+                ingredients_list = input("Enter the ingredients (comma-separated): ")
+                ingredients = [ingredient.strip() for ingredient in ingredients_list.split(",")]
+
+                
+                recipes[recipe_name] = ingredients
+
+                print(f"Recipe '{recipe_name}' added successfully!")
 
         elif user_input.lower() == "x":
             break
