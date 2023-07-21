@@ -19,7 +19,6 @@ pipenv shell
 
 ## Group Members-
 - Adam Mauch
-- Megan Harrison
 - Suan Lian
 - Syeda Anjum
 
