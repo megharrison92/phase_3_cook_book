@@ -14,3 +14,6 @@ pipenv shell
 - Megan Harrison
 - Suan Lian
 - Syeda Anjum
+
+## Special Thanks to-
+-Ameilia, Jon, and Jessica 
