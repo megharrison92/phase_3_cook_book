@@ -18,7 +18,7 @@ if __name__ == '__main__':
     }
 
     while True:
-        user_input = input("Welcome to the Recipe Finder CLI!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, or 'X' to exit: ")
+        user_input = input("Welcome to the Recipe Finder!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, 'F' to find recipes by ingredient, or 'X' to exit: ")
 
         if user_input.lower() == "r":
             print("Available recipes:")
@@ -41,6 +41,25 @@ if __name__ == '__main__':
 
             if not found_recipe:
                 print("Recipe not found!")
+
+        elif user_input.lower() == "x":
+            break
+
+        elif user_input.lower() == "f":
+            ingredient_input = input("Enter the ingredient to find recipes: ")
+            ingredient = ingredient_input.strip().lower()
+
+            recipes_containing_ingredient = []
+            for recipe_name, ingredients in recipes.items():
+                if ingredient in map(str.lower, ingredients):
+                    recipes_containing_ingredient.append(recipe_name)
+
+            if len(recipes_containing_ingredient) > 0:
+                print(f"Recipes containing '{ingredient}':")
+                for recipe_name in recipes_containing_ingredient:
+                    print(recipe_name)
+            else:
+                print(f"No recipes found containing '{ingredient}'.")
 
         elif user_input.lower() == "x":
             break
