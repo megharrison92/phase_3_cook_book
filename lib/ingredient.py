@@ -28,3 +28,20 @@ class Ingredient:
             raise Exception("Must be a string greater than 0 characters")
 
     ingredient_type = property(get_ingredient_type, set_ingredient_type)
+
+    @property
+    def places(self):
+        from place import Place
+        ingredient_list = []
+        for place in Place.all:
+            if place.ingredient == self:
+                ingredient_list.append(place)
+        return ingredient_list
+    
+    @property
+    def recipes(self):
+        recipe_list = []
+        for place in self.places:
+            if place.recipe not in recipe_list:
+                recipe_list.append(place.recipe)
+        return recipe_list
