@@ -19,7 +19,7 @@ if __name__ == '__main__':
     }
 
     while True:
-        user_input = input("Welcome to the Recipe Finder!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, 'F' to find recipes by ingredient, 'S' for random suggestion, or 'X' to exit: ")
+        user_input = input("Welcome to the Recipe Finder!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, 'F' to find recipes by ingredient, 'S' for random suggestion, 'A' for all ingredients available, or 'X' to exit: ")
 
         if user_input.lower() == "r":
             print("Available recipes:")
@@ -68,8 +68,8 @@ if __name__ == '__main__':
 
         elif user_input.lower() == "a":
             print("Available ingredients:")
-            for ingredient_name in ingredients.keys():
-                print(ingredient_name)
+            for ingredient in recipes.values():
+                print(ingredient)
             print("--------------------------")
 
         elif user_input.lower() == "x":
