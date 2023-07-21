@@ -1,4 +1,3 @@
-
 class Recipe_ingredient:
 
     def __init__(self, recipe, ingredient):
@@ -26,3 +25,4 @@ class Recipe_ingredient:
             raise Exception("Must be a string greater than 0 characters")
 
     ingredient = property(get_ingredient, set_ingredient)
+    

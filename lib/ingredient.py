@@ -1,5 +1,6 @@
 
 class Ingredient:
+    all = []    
 
 <<<<<<< HEAD
     def __init__(self, name, is_wet=False):
@@ -74,6 +75,7 @@ ingredients = [
     def __init__(self, name, ingredient_type):
         self.name = name
         self.ingredient_type = ingredient_type
+        Ingredient.all.append(self)
 
     def get_name(self):
         return self._name
@@ -96,4 +98,24 @@ ingredients = [
             raise Exception("Must be a string greater than 0 characters")
 
     ingredient_type = property(get_ingredient_type, set_ingredient_type)
+<<<<<<< HEAD
 >>>>>>> b97a70b72f9d4254eca1ac0204a9d1ef11860f81
+=======
+
+    @property
+    def places(self):
+        from place import Place
+        ingredient_list = []
+        for place in Place.all:
+            if place.ingredient == self:
+                ingredient_list.append(place)
+        return ingredient_list
+    
+    @property
+    def recipes(self):
+        recipe_list = []
+        for place in self.places:
+            if place.recipe not in recipe_list:
+                recipe_list.append(place.recipe)
+        return recipe_list
+>>>>>>> c35bb9ac6c753f3d95ba0e1f48a224468da4c4ad

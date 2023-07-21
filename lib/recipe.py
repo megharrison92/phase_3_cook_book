@@ -1,9 +1,11 @@
 
+
 class Recipe:
 
     def __init__(self, name, food_type):
         self.name = name
         self.food_type = food_type 
+        
 
     def get_name(self):
         return self._name
@@ -24,5 +26,22 @@ class Recipe:
             self._food_type = new_food_type
         else:
             raise Exception("Must be a string greater than 0 characters")
-
+        
     food_type = property(get_food_type, set_food_type)
+
+    @property
+    def places(self):
+        from place import Place
+        place_list = []
+        for place in Place.all:
+            if place.recipe == self:
+                place_list.append(place)
+        return place_list
+    
+    @property
+    def ingredients(self):
+        ingredient_list = []
+        for place in self.places:
+            if place.ingredient not in ingredient_list:
+                ingredient_list.append(place.ingredient)
+        return ingredient_list
