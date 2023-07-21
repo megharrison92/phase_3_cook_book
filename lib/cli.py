@@ -30,11 +30,16 @@ if __name__ == '__main__':
             recipe_name_input = input("Enter the recipe name to see its ingredients: ")
             recipe_name = recipe_name_input.strip()
 
-            if recipe_name in recipes:
-                print(f"Ingredients for '{recipe_name}':")
-                for ingredient in recipes[recipe_name]:
-                    print(ingredient)
-            else:
+            found_recipe = False
+            for name in recipes.keys():
+                if recipe_name.lower() == name.lower():
+                    found_recipe = True
+                    print(f"Ingredients for '{name}':")
+                    for ingredient in recipes[name]:
+                        print(ingredient)
+                    break
+
+            if not found_recipe:
                 print("Recipe not found!")
 
         elif user_input.lower() == "x":
