@@ -11,25 +11,34 @@ if __name__ == '__main__':
     "Waffles": ['AP Flour', 'Sugar', 'Baking Powder', 'Salt', 'Milk', 'Eggs', 'Butter', 'Maple Syrup'],
     "Eggs Benedict": ['Eggs', 'Lemon Juice', 'White Pepper', 'Butter', 'Salt', 'White Vinegar', 'Canadian Bacon', 'English Muffins'],
     "Avocado Toast": ['Avocado', 'Lemon Juice', 'Salt', 'Black Pepper', 'Bread', 'Olive Oil', 'Red Pepper Flakes'],
-    "Classic Breaded Chicken Tenders": ['Chicken tender', 'AP Flour', 'Eggs', 'Breadcrumbs', 'Salt', 'Black Pepper', 'Paprika', 'Cooking Oil'],
+    "Chicken Tenders": ['Chicken tender', 'AP Flour', 'Eggs', 'Breadcrumbs', 'Salt', 'Black Pepper', 'Paprika', 'Cooking Oil'],
     "Mac n Cheese": ['Elbow Macaroni', 'Cheese', 'Butter', 'Milk', 'AP Flour', 'Salt', 'Black Pepper'],
     "Grilled Cheese": ['Bread', 'Cheese', 'Butter'],
     "Tomato Soup": ['Butter', 'Onion', 'Garlic', 'Tomatoes', 'Vegetable broth', 'Spices']
     }
 
-    user_input = input("Welcome to the Recipe Finder CLI! Print R to see recipes...")
+    while True:
+        user_input = input("Welcome to the Recipe Finder CLI!\nType 'R' to see recipes, 'I' to see ingredients for a specific recipe, or 'X' to exit: ")
 
-    while user_input.lower() != "x":
         if user_input.lower() == "r":
             print("Available recipes:")
             for recipe_name in recipes.keys():
                 print(recipe_name)
             print("--------------------------")
+
+        elif user_input.lower() == "i":
+            recipe_name_input = input("Enter the recipe name to see its ingredients: ")
+            recipe_name = recipe_name_input.strip()
+
+            if recipe_name in recipes:
+                print(f"Ingredients for '{recipe_name}':")
+                for ingredient in recipes[recipe_name]:
+                    print(ingredient)
+            else:
+                print("Recipe not found!")
+
+        elif user_input.lower() == "x":
             break
-        if user_input.lower() == "i":
-            print("Available ingredients:")
-            for recipe_name in recipes.keys():
-                if isinstance(recipes.keys, list):
-                    print(recipe_name.keys())
-            print("--------------------------")
-            break
+
+        else:
+            print("Invalid option. Please try again.")
